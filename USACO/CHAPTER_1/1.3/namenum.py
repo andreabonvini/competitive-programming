@@ -1,33 +1,33 @@
 """
 ID: a.bonvi96
 LANG: PYTHON3
-PROG: palsquare
+PROG: namenum
 """
-
-dic = {1:'1',2:'2',3:'3',4:'4',5:'5',6:'6',7:'7',8:'8',9:'9',10:'A',11:'B',12:'C',13:'D',14:'E',15:'F',16:'G',17:'H',18:'I',19:'L',20:'M'}
-fin = open('palsquare.in', 'r')
-fout = open('palsquare.out', 'w')
-B = int(fin.readline().strip())
-def conv(B,n):
-	q = n
-	x = []
-	while q != 0:
-		x.append(dic[q%B])
-		q //=B
-	x = sorted(x,reverse = True)
-	return ''.join(x)
-def is_pal(x):
-	if x == x[::-1]:
-		return True
+tt = {'A':[2],'B':[2],'C':[2],'D':[3],'E':[3],'F':[3],'G':[4],'H':[4],'I':[4],'J':[5],'K':[5],'L':[5],'M':[6],'N':[6],'O':[6],'P':[7],'R':[7],'S':[7],'T':[8],'U':[8],'V':[8],'W':[9],'X':[9],'Y':[9]}
+d = []
+d_file = open('dict.txt','r')
+while True:
+	x = d_file.readline().strip()
+	if x == '':
+		break
 	else:
-		return False
-nums = []
-for i in range(1,301):
-	x = conv(B,i**2)
-	if is_pal(x):
-		nums.append([conv(B,i),x])
-for n in nums:
-	fout.write('{}\n'.format(' '.join(n)))
+		if not 'Z' in list(x) and 'Q' not in list(x):
+			d.append(x)
+d_file.close()
+dic = {}
+for el in d:
+	x = list(el)
+	r = []
+	for l in x:
+		for n2 in tt[l]:
+			r.append(str(n2))
+	n3 = ''.join(r)
+	if n3 not in dic.keys():
+		dic[n3] =  [el]
+	else:
+		dic[n3].append(el)
+
+fin = open('namenum.in', 'r')
+fout = open('namenum.out', 'w')
 
 fout.close()
-
