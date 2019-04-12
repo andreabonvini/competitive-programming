@@ -17,7 +17,7 @@ for _ in range(T):
 	step = 1
 
 	# when step == 1 we'll send a message like this: 0101010101...
-	# if step == 2 we'll send a message liker this: 001100110011...
+	# if step == 2 we'll send a message like this: 001100110011...
 	# if step == 4 we'll send a message like this: 0000111100001111...
 	# and so on...
 
@@ -45,7 +45,7 @@ for _ in range(T):
 		# and add it to our collection
 		answers.append(answer)
 
-		# time to dobule our step
+		# time to double our step
 		step*=2
 
 	# here we transform our answers matrix in its transpose and convert the numbers on its rows
